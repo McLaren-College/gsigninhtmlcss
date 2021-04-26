@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="258116967414-2iq727v7oh884kj2bpirk5pomqd8ukda.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body >
+
+<h1>Welcome to the Demo of Google Sign In</h1>
+<hr>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<div id="userDetailsDiv"></div>
+<script>
+
+    function onSignIn(googleUser) {
+        // get user profile information
+        console.log(googleUser.getBasicProfile());
+        let userDetails=googleUser.getBasicProfile();
+        let userDetailsDiv = document.getElementById('userDetailsDiv');
+        let name=document.createElement('p');
+        let nameText = document.createTextNode(userDetails.getName());
+        name.appendChild(nameText);
+        userDetailsDiv.appendChild(name);
+        let email=document.createElement('p');
+        let emailText=document.createTextNode(userDetails.getEmail());
+        userDetailsDiv.appendChild(email);
+        let img = document.createElement("img");
+        img.src = userDetails.getImageUrl();
+        userDetailsDiv.appendChild(img);
+        let signOutButton = document.createElement("BUTTON");
+        signOutButton.innerHTML = "Sign Out";
+         signOutButton.onclick=signOut;
+        userDetailsDiv.appendChild(signOutButton);
+        document.body.appendChild(userDetailsDiv);
+    }
+    function signOut() {
+        gapi.auth2.getAuthInstance().signOut().then(function() {
+            console.log('user signed out');
+            let userDetailsDiv = document.getElementById('userDetailsDiv');
+            userDetailsDiv.innerHTML="";
+
+        })
+    }
+</script>
+
+</body>
+
+
+</html>
