@@ -4,6 +4,7 @@
     <meta name="google-signin-client_id" content="258116967414-2iq727v7oh884kj2bpirk5pomqd8ukda.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" href="styles.css">
+    <title>Google Sign In</title>
 </head>
 <body >
 
@@ -22,12 +23,12 @@
         let nameText = document.createTextNode(userDetails.getName());
         name.appendChild(nameText);
         userDetailsDiv.appendChild(name);
-        let email=document.createElement('p');
-        let emailText=document.createTextNode(userDetails.getEmail());
-        userDetailsDiv.appendChild(email);
         let img = document.createElement("img");
         img.src = userDetails.getImageUrl();
         userDetailsDiv.appendChild(img);
+        let email=document.createElement('p');
+        let emailText=document.createTextNode(userDetails.getEmail());
+        userDetailsDiv.appendChild(emailText);
         let signOutButton = document.createElement("BUTTON");
         signOutButton.innerHTML = "Sign Out";
          signOutButton.onclick=signOut;
