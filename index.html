@@ -28,7 +28,8 @@
         userDetailsDiv.appendChild(img);
         let email=document.createElement('p');
         let emailText=document.createTextNode(userDetails.getEmail());
-        userDetailsDiv.appendChild(emailText);
+        email.appendChild(emailText);
+        userDetailsDiv.appendChild(email);
         let signOutButton = document.createElement("BUTTON");
         signOutButton.innerHTML = "Sign Out";
          signOutButton.onclick=signOut;
